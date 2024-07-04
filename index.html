@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Robokodov Sajt</title>
+        <link rel="icon" type="image/x-icon" href="icon.jpg">
+    </head>
+    <style>
+        h1 {
+            font-family: Arial, Helvetica, sans-serif;
+            color: white;
+            text-shadow: 2px 2px 4px #000000;
+            font-weight: bold;
+        }
+        p {
+            font-family: Arial, Helvetica, sans-serif;
+            color: white;
+            text-shadow: 2px 2px 4px #000000;
+            font-weight: bold;
+        }
+        li {
+            font-family: Arial, Helvetica, sans-serif;
+            color: white;
+            text-shadow: 2px 2px 4px #000000;
+            font-weight: bold;
+        }
+        body{
+            background-image: url("bg.jpg");
+            background-size: 25%, auto;
+            text-align: center;
+            padding: 20px;
+        }
+        textarea {
+            width: 100%;
+            height: 50px;
+        }
+        #output {
+            margin-top: 20px;
+            border: 1px solid #ccc;
+            padding: 10px;
+        }
+        .container {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    width: 400px;
+}
+ 
+.rating {
+    font-size: 20px;
+    margin: 10px 0;
+}
+ 
+.stars {
+    font-size: 30px;
+    margin: 10px 0;
+}
+ 
+.star {
+    cursor: pointer;
+    margin: 0 5px;
+}
+ 
+.one {
+    color: rgb(255, 0, 0);
+}
+ 
+.two {
+    color: rgb(255, 106, 0);
+}
+ 
+.three {
+    color: rgb(251, 255, 120);
+}
+ 
+.four {
+    color: rgb(255, 255, 0);
+}
+ 
+.five {
+    color: rgb(24, 159, 14);
+}
+ 
+textarea {
+    width: 90%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+ 
+button {
+    background-color: #007BFF;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+ 
+button:hover {
+    background-color: #0056b3;
+}
+ 
+.reviews {
+    margin-top: 20px;
+    text-align: left;
+}
+ 
+.review {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 10px;
+    margin: 10px 0;
+}
+ 
+.review p {
+    margin: 0;
+}
+.container{
+    background-color: yellowgreen;
+}
+    </style>
+    
+    <center>
+    <b><h1>Dobrošodli na Robokodov Sajt</h1></b>
+    <img src="banner.jpg" width="100%" height="auto">
+    <div class="Opis">
+        <h1>O Školi:</h1>
+        <p>Robokod je najveća škola robotike, programiranja i automatike, na Jugu Srbije.</p>
+        <p>Robokod se u Nišu nalazi na sledećim lokacijama:</p>
+        <ul>
+            <li>Robokod Niš, Kalča</li>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2902.831813761179!2d21.89147647503024!3d43.317780074061915!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4755b0b229e6d90f%3A0x7d3156394bc2842e!2zS2FsxI1h!5e0!3m2!1sen!2srs!4v1719515775790!5m2!1sen!2srs" width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            <li>Robokod Niš, Roda</li>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2902.584710412531!2d21.92297737503055!3d43.32295227372946!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4755b0ebf92acde3%3A0xeabac131ae2461a9!2sForma%20Ideale%20Ni%C5%A1%20-%20Roda%20centar!5e0!3m2!1sen!2srs!4v1719515993674!5m2!1sen!2srs" width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </ul>
+    </div>
+    <h1>Izvršilac HTML koda</h1>
+    <textarea id="input" placeholder="Piši Ovde HTML Kod"></textarea>
+    <div id="output"></div>
+    <center>
+    <div class="container">
+        <h1>Robokod Niš</h1>
+        <div class="rating">
+            <span id="rating">0</span>/5
+        </div>
+        <div class="stars" id="stars">
+            <span class="star" data-value="1">★</span>
+            <span class="star" data-value="2">★</span>
+            <span class="star" data-value="3">★</span>
+            <span class="star" data-value="4">★</span>
+            <span class="star" data-value="5">★</span>
+        </div>
+        <p>Share your review:</p>
+        <textarea id="review"
+                  placeholder="Write your review here">
+          </textarea>
+        <button id="submit">Submit</button>
+        <div class="reviews" id="reviews">
+        </div>
+    </div> 
+</center>
+    </body>
+    <script>
+        const input = document.getElementById('input');
+        const output = document.getElementById('output');
+
+        input.addEventListener('input', () => {
+            const code = input.value;
+            output.innerHTML = code;
+        });
+        const stars = document.querySelectorAll(".star");
+const rating = document.getElementById("rating");
+const reviewText = document.getElementById("review");
+const submitBtn = document.getElementById("submit");
+const reviewsContainer = document.getElementById("reviews");
+
+stars.forEach((star) => {
+	star.addEventListener("click", () => {
+		const value = parseInt(star.getAttribute("data-value"));
+		rating.innerText = value;
+
+		// Remove all existing classes from stars
+		stars.forEach((s) => s.classList.remove("one", 
+												"two", 
+												"three", 
+												"four", 
+												"five"));
+
+		// Add the appropriate class to 
+		// each star based on the selected star's value
+		stars.forEach((s, index) => {
+			if (index < value) {
+				s.classList.add(getStarColorClass(value));
+			}
+		});
+
+		// Remove "selected" class from all stars
+		stars.forEach((s) => s.classList.remove("selected"));
+		// Add "selected" class to the clicked star
+		star.classList.add("selected");
+	});
+});
+
+submitBtn.addEventListener("click", () => {
+	const review = reviewText.value;
+	const userRating = parseInt(rating.innerText);
+
+	if (!userRating || !review) {
+		alert(
+"Please select a rating and provide a review before submitting."
+			);
+		return;
+	}
+
+	if (userRating > 0) {
+		const reviewElement = document.createElement("div");
+		reviewElement.classList.add("review");
+		reviewElement.innerHTML = 
+`<p><strong>Rating: ${userRating}/5</strong></p><p>${review}</p>`;
+		reviewsContainer.appendChild(reviewElement);
+
+		// Reset styles after submitting
+		reviewText.value = "";
+		rating.innerText = "0";
+		stars.forEach((s) => s.classList.remove("one", 
+												"two", 
+												"three", 
+												"four", 
+												"five", 
+												"selected"));
+	}
+});
+
+function getStarColorClass(value) {
+	switch (value) {
+		case 1:
+			return "one";
+		case 2:
+			return "two";
+		case 3:
+			return "three";
+		case 4:
+			return "four";
+		case 5:
+			return "five";
+		default:
+			return "";
+	}
+}
+
+    </script> 
+</body>
+</html>
